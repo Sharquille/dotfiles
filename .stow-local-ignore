@@ -1,0 +1,4 @@
+.config/tmux/plugins/tmux-continuum/scripts/handle_tmux_automatic_start/README.md
+.config/tmux/plugins/tmux-resurrect/run_tests
+.config/tmux/plugins/tmux-resurrect/tests/helpers/helpers.sh
+.config/tmux/plugins/tmux-resurrect/tests/run_tests_in_isolation
