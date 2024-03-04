@@ -1,0 +1,57 @@
+import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
+
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+# import = [ "~/.config/alacritty/catppuccin/catppuccin-mocha.yml" ]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+dynamic_padding = false
+decorations = "buttonless"
+
+  [window.padding]
+  x = 18
+  y = 16
+
+[scrolling]
+history = 10_000
+multiplier = 3
+
+[font]
+  size = 24
+
+  [font.normal]
+  family = "AnonymicePro Nerd Font"
+  style = "Regular"
+
+  [font.bold]
+  family = "AnonymicePro Nerd Font"
+  style = "Bold"
+
+  [font.italic]
+  family = "AnonymicePro Nerd Font"
+  style = "Italic"
+
+  [font.bold_italic]
+  family = "AnonymicePro Nerd Font"
+  style = "Bold Italic"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "command|shift"
+action = "SpawnNewInstance"
+[cursor]
+  style.shape = "Block"
+  style.blinking = "Always"
+  blink_interval = 500
+  vi_mode_style.shape = "Beam"
+  vi_mode_style.blinking = "Always"
+  unfocused_hollow = true
+  thickness = 0.1
+
+
+
