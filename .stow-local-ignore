@@ -2,3 +2,7 @@
 .config/tmux/plugins/tmux-resurrect/run_tests
 .config/tmux/plugins/tmux-resurrect/tests/helpers/helpers.sh
 .config/tmux/plugins/tmux-resurrect/tests/run_tests_in_isolation
+
+.git
+.gitignore
+.stow-local-ignore
