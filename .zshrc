@@ -177,5 +177,6 @@ alias powershell="/usr/local/bin/pwsh"
 # update homebrew 
 # brew update 
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(zoxide init zsh)"
