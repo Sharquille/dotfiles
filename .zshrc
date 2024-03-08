@@ -131,6 +131,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 alias ls="colorls"
+alias cd="z"
 
 . "$HOME/.cargo/env"
 
