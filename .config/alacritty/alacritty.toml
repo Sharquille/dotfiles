@@ -22,22 +22,22 @@ history = 10_000
 multiplier = 3
 
 [font]
-  size = 24
+  size = 28
 
   [font.normal]
-  family = "AnonymicePro Nerd Font"
+  family = "BlexMono Nerd Font Mono"
   style = "Regular"
 
   [font.bold]
-  family = "AnonymicePro Nerd Font"
+  family = "BlexMono Nerd Font Mono"
   style = "Bold"
 
   [font.italic]
-  family = "AnonymicePro Nerd Font"
+  family = "BlexMono Nerd Font Mono"
   style = "Italic"
 
   [font.bold_italic]
-  family = "AnonymicePro Nerd Font"
+  family = "BlexMono Nerd Font Mono"
   style = "Bold Italic"
 
 [[keyboard.bindings]]
