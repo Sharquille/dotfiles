@@ -1,0 +1,10 @@
+{
+    "diagnostics.disable": [
+        "undefined-field",
+        "redefined-local"
+    ],
+    "diagnostics.globals": [
+        "filter",
+        "local"
+    ]
+}
