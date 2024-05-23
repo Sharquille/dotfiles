@@ -14,9 +14,9 @@ dynamic_padding = false
 decorations = "buttonless"
 
   [window.padding]
-  x = 18
-  y = 16
-
+  x = 15
+  y = 15
+ 
 [scrolling]
 history = 10_000
 multiplier = 3
