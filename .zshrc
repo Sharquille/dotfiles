@@ -180,3 +180,19 @@ alias powershell="/usr/local/bin/pwsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(zoxide init zsh)"
+
+
+# zsh plugins for starship 
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+
+source /opt/homebrew/share/zsh-autopair/autopair.zsh 
