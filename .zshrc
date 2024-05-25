@@ -85,7 +85,7 @@ plugins=(
   man
           )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -159,7 +159,6 @@ alias ls="colorls"
 
 . "$HOME/.cargo/env"
 
-eval "$(starship init zsh)"
 
 export PATH="$HOME/.config/lvim/bin:$PATH"
 
