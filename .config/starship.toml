@@ -21,7 +21,7 @@ style = 'bold blue'
 symbol = " "
 
 [golang]
-format = '[ ](bold cyan)'
+format = '[ $version](bold cyan)'
 
 [kubernetes]
 symbol = '☸ '
