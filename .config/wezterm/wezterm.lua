@@ -5,7 +5,7 @@ return {
 	-- color_scheme
 	color_scheme = "Catppuccin Mocha",
 	enable_tab_bar = false,
-	font = wezterm.font("BlexMono Nerd Font Mono", {
+	font = wezterm.font("FiraCode Nerd Font", {
 		weight = "Bold",
 		italic = true,
 	}),
