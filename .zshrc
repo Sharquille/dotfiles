@@ -1,21 +1,21 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,13 +77,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  web-search
-  man
-          )
+#plugins=(
+#  git
+#  zsh-autosuggestions
+#  zsh-syntax-highlighting
+#  web-search
+#  man
+#          )
 
 # source $ZSH/oh-my-zsh.sh
 
@@ -114,7 +114,7 @@ plugins=(
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/sharquilleandrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -130,8 +130,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-alias ls="colorls"
-alias cd="z"
 
 . "$HOME/.cargo/env"
 
@@ -155,7 +153,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-alias ls="colorls"
 
 . "$HOME/.cargo/env"
 
@@ -172,14 +169,39 @@ export PATH="$HOME/.config/lvim/bin:$PATH"
 alias powershell="/usr/local/bin/pwsh"
 
 # update conda 
-# conda update --all 
+conda update --all 
 
 # update homebrew 
-# brew update 
+brew update 
 
+# zsh 
+source <(fzf --zsh)
+
+# enable fuzzy finding 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Add fzf key bindings and auto-completion
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+# aliases 
+alias fh="history | fzf"
+
+
+
+# zoxide cli tool 
 eval "$(zoxide init zsh)"
+
+# zoxide aliases
+alias cd="z"
+alias cs="zi"
+
+# eza allias 
+# aliases eza - ls replacement
+alias ls="eza"
+alias lg="eza -la --git --icons"
+alias lt="eza -la --tree --icons"
+alias la="eza -la --icons"
 
 
 # zsh plugins for starship 
@@ -198,3 +220,24 @@ fi
 source /opt/homebrew/share/zsh-autopair/autopair.zsh 
 export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
 export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
+
+
+
+# Increase the size of the history file
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+# Append to the history file, don't overwrite it
+setopt APPEND_HISTORY
+
+# Share history across all terminal sessions
+setopt SHARE_HISTORY
+
+# Don't record duplicates and erase duplicates when they appear
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+
+function aliases() {
+    alias | fzf --preview 'echo {}' --height=40% --border --ansi
+}
