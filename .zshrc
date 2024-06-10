@@ -169,7 +169,7 @@ export PATH="$HOME/.config/lvim/bin:$PATH"
 alias powershell="/usr/local/bin/pwsh"
 
 # update conda 
-conda update --all 
+# conda update --all 
 
 # update homebrew 
 brew update 
