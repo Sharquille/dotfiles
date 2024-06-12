@@ -242,3 +242,4 @@ function aliases() {
     alias | fzf --preview 'echo {}' --height=40% --border --ansi
 }
 alias cat='bat'
+
