@@ -241,3 +241,4 @@ setopt HIST_IGNORE_ALL_DUPS
 function aliases() {
     alias | fzf --preview 'echo {}' --height=40% --border --ansi
 }
+alias cat='bat'
