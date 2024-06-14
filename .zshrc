@@ -172,7 +172,7 @@ alias powershell="/usr/local/bin/pwsh"
 # conda update --all 
 
 # update homebrew 
-brew update 
+# brew update 
 
 # zsh 
 source <(fzf --zsh)
