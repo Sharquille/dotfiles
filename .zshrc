@@ -244,3 +244,4 @@ function aliases() {
 alias cat='bat'
 
 source ~/dotfiles/.zshrc_completion_script
+source ~/dotfiles/.zshrc_sysinfo
