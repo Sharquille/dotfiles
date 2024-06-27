@@ -19,6 +19,7 @@ return {
         'gofumpt',
         'goimports-reviser',
         'delve',
+        'biome',
       },
     }
 
@@ -42,6 +43,9 @@ return {
         -- go sources
         formatting.gofumpt,
         formatting.golines,
+        -- typescript
+        formatting.biome,
+        diagnostics.tsserver,
       },
 
       on_attach = function(client, bufnr)
