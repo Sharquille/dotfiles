@@ -1,6 +1,13 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 #if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
@@ -130,59 +137,26 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-. "$HOME/.cargo/env"
-
-eval "$(starship init zsh)"
-
-export PATH="$HOME/.config/lvim/bin:$PATH"
-
-# source ~/.scripts/set_enc_env_key.sh
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/sharquilleandrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/sharquilleandrew/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/sharquilleandrew/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/sharquilleandrew/anaconda3/bin:$PATH"
-    fi
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone git@github.com:zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
-. "$HOME/.cargo/env"
+# Add in Powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-
-export PATH="$HOME/.config/lvim/bin:$PATH"
-
-
-# Conda env info set up 
-
-
-# source ~/.scripts/set_enc_env_key.sh
-#
-# set powershell open 
-alias powershell="/usr/local/bin/pwsh"
-
-# update conda 
-# conda update --all 
-
-# update homebrew 
-# brew update 
-
-# zsh 
-source <(fzf --zsh)
-
-# enable fuzzy finding 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Add fzf key bindings and auto-completion
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
 # aliases 
 alias fh="history | fzf"
@@ -203,30 +177,41 @@ alias lg="eza -la --git --icons"
 alias lt="eza -la --tree --icons"
 alias la="eza -la --icons"
 
+# Add in snippets
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
 
-# zsh plugins for starship 
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Load completions
+autoload -Uz compinit && compinit
 
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+zinit cdreplay -q
 
-    autoload -Uz compinit
-    compinit
-fi
-
-source /opt/homebrew/share/zsh-autopair/autopair.zsh 
-export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
-export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
-
-
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Increase the size of the history file
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
 
 # Append to the history file, don't overwrite it
 setopt APPEND_HISTORY
@@ -237,11 +222,17 @@ setopt SHARE_HISTORY
 # Don't record duplicates and erase duplicates when they appear
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt hist_find_no_dups
 
-function aliases() {
+function als() {
     alias | fzf --preview 'echo {}' --height=40% --border --ansi
 }
 alias cat='bat'
 
 source ~/dotfiles/.zshrc_completion_script
 source ~/dotfiles/.zshrc_sysinfo
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
