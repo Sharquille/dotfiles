@@ -195,8 +195,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+#eval "$(fzf --zsh)"
+#eval "$(zoxide init --cmd cd zsh)"
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -236,3 +236,11 @@ source ~/dotfiles/.zshrc_sysinfo
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add Nix to PATH
+export PATH=$PATH:/nix/var/nix/profiles/default/bin
+
+# Add Home Manager to PATH
+export PATH=$PATH:$HOME/.nix-profile/bin
+
+
