@@ -177,6 +177,10 @@ alias lg="eza -la --git --icons"
 alias lt="eza -la --tree --icons"
 alias la="eza -la --icons"
 
+
+# git aliases
+alias gpom = "git push -u origin main"
+
 # Add in snippets
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
