@@ -246,3 +246,4 @@ export PATH=$PATH:/nix/var/nix/profiles/default/bin
 export PATH=$PATH:$HOME/.nix-profile/bin
 
 
+### End of Zinit's installer chunk
