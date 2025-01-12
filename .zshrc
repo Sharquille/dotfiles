@@ -244,5 +244,3 @@ export PATH=$PATH:/nix/var/nix/profiles/default/bin
 
 # Add Home Manager to PATH
 export PATH=$PATH:$HOME/.nix-profile/bin
-
-
