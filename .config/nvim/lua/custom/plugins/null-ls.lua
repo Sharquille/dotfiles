@@ -46,6 +46,9 @@ return {
         -- typescript
         formatting.biome,
         diagnostics.tsserver,
+        -- Markdown
+        formatting.markdownlint,
+        diagnostics.markdownlint,
       },
 
       on_attach = function(client, bufnr)
