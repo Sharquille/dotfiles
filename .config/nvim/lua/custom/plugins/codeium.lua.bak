@@ -1,8 +1,5 @@
 return {
-
-  {
-
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
-  },
+  'Exafunction/codeium.vim',
+  event = 'BufReadPre', -- Lazy load plugin for certain filetypes
+  ft = { 'markdown' }, -- Only activate for Markdown files
 }

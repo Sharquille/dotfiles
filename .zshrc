@@ -244,3 +244,9 @@ export PATH=$PATH:/nix/var/nix/profiles/default/bin
 
 # Add Home Manager to PATH
 export PATH=$PATH:$HOME/.nix-profile/bin
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/sharquilleandrew/.lmstudio/bin"
+
+export EDITOR=nvim
+export VISUAL=nvim
