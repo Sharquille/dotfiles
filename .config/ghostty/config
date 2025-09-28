@@ -1,6 +1,6 @@
 macos-titlebar-style = hidden
 window-theme = ghostty 
-#theme = catppuccin-mocha.conf
+theme = ~/dotfiles/.config/ghostty/themes/catppuccin-mocha.conf
 
 
 
