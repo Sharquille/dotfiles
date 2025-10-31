@@ -1,13 +1,11 @@
 macos-titlebar-style = hidden
 window-theme = ghostty 
-theme = ~/dotfiles/.config/ghostty/themes/catppuccin-mocha.conf
-
+theme = /Users/sharquilleandrew/.config/ghostty/themes/catppuccin-mocha.conf 
 
 
 background-opacity = 0.90
 background-blur-radius = 13
 unfocused-split-opacity = 0.53
-theme = catppuccin-mocha
 background = #1e1e2e
 foreground = #cdd6f4
 selection-background = #585b70
