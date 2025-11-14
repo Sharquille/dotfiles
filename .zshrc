@@ -177,7 +177,10 @@ alias lg="eza -la --git --icons"
 alias lt="eza -la --tree --icons"
 alias la="eza -la --icons"
 
+ofpath1="/Users/Library/Mobile Documents"
+ofpath2="iCloud~md~obsidian/Documents"
 
+alias ob={ofpath1}+{ofpath2}
 
 # Add in snippets
 zinit snippet OMZL::git.zsh
@@ -259,3 +262,4 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+
