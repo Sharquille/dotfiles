@@ -155,14 +155,6 @@ vim.opt.whichwrap:append '<>[]hl'
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Replace j and k functions in terms of movememnt : j to move up  and k down
-vim.keymap.set('n', 'j', 'k', { noremap = true })
-vim.keymap.set('n', 'k', 'j', { noremap = true })
-
--- Replace j and k functions in terms of movememnt : visual mode
-vim.keymap.set('v', 'j', 'k', { noremap = true })
-vim.keymap.set('v', 'k', 'j', { noremap = true })
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
