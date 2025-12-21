@@ -263,3 +263,5 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 alias gemini="gemini --model gemini-3-flash-preview"
+
+alias python="python3"
