@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+cheatsheet_file="$config_home/tmux/cheatsheet.md"
+
+if [[ ! -f "$cheatsheet_file" ]]; then
+  printf 'tmux-cheatsheet: could not find %s\n' "$cheatsheet_file" >&2
+  exit 1
+fi
+
+if [[ ! -t 1 ]]; then
+  exec cat "$cheatsheet_file"
+fi
+
+if command -v glow >/dev/null 2>&1; then
+  exec glow -p "$cheatsheet_file"
+fi
+
+if command -v bat >/dev/null 2>&1; then
+  exec bat --paging=always --style=plain --language=markdown "$cheatsheet_file"
+fi
+
+if command -v less >/dev/null 2>&1; then
+  exec less "$cheatsheet_file"
+fi
+
+exec cat "$cheatsheet_file"

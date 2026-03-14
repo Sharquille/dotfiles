@@ -265,3 +265,6 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 alias gemini="gemini --model gemini-3-flash-preview"
 
 alias python="python3"
+
+# Load dotfile-managed shell path additions.
+[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/path.zsh" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/path.zsh"
